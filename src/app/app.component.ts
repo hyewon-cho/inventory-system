@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { ProductService } from './services/product-service';
+import { ProductService } from './services/product.service';
 import { Product } from './app.value';
 import { Table } from 'primeng/table';
+import { forEach } from 'lodash-es';
 
 @Component({
   selector: 'app-root',
@@ -27,7 +28,9 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.productService.getProducts().then((data) => (this.products = data));
+    this.productService.getProducts().subscribe((data) => {
+      this.products = data;
+    });
 
     this.statuses = [
       { label: 'INSTOCK', value: 'instock' },
@@ -51,13 +54,19 @@ export class AppComponent implements OnInit {
         this.products = this.products.filter(
           (val) => !this.selectedProducts.includes(val)
         );
-        this.selectedProducts = [];
         this.messageService.add({
           severity: 'success',
           summary: 'Successful',
           detail: 'Products Deleted',
           life: 3000,
         });
+
+        forEach(this.selectedProducts, ({ id }) => {
+          if (id) {
+            this.productService.deleteProduct(id);
+          }
+        });
+        this.selectedProducts = [];
       },
     });
   }
@@ -88,6 +97,10 @@ export class AppComponent implements OnInit {
           detail: 'Product Deleted',
           life: 3000,
         });
+
+        if (product.id) {
+          this.productService.deleteProduct(product.id);
+        }
       },
     });
   }
@@ -109,6 +122,7 @@ export class AppComponent implements OnInit {
           detail: 'Product Updated',
           life: 3000,
         });
+        this.productService.updateProduct(this.product.id, this.product);
       } else {
         this.product.id = this.createId();
         this.product.image = 'product-placeholder.svg';
@@ -119,6 +133,7 @@ export class AppComponent implements OnInit {
           detail: 'Product Created',
           life: 3000,
         });
+        this.productService.addProduct(this.product);
       }
 
       this.products = [...this.products];
