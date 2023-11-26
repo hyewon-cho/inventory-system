@@ -5421,6 +5421,23 @@ pretty-bytes@^5.3.0:
   resolved "http://cui.devel.kakao.com/pretty-bytes/-/pretty-bytes-5.6.0.tgz#356256f643804773c82f64723fe78c92c62beaeb"
   integrity sha512-FFw039TmrBqFK8ma/7OL3sDz/VytdtJr044/QUJtH0wK9lb9jLq9tJyIxUwtQJHwar2BqtiA4iCWSwo9JLkzFg==
 
+primeflex@^3.3.1:
+  version "3.3.1"
+  resolved "http://cui.devel.kakao.com/primeflex/-/primeflex-3.3.1.tgz#361dddf6eb5db50d733e4cddd4b6e376a3d7bd68"
+  integrity sha512-zaOq3YvcOYytbAmKv3zYc+0VNS9Wg5d37dfxZnveKBFPr7vEIwfV5ydrpiouTft8MVW6qNjfkaQphHSnvgQbpQ==
+
+primeicons@^6.0.1:
+  version "6.0.1"
+  resolved "http://cui.devel.kakao.com/primeicons/-/primeicons-6.0.1.tgz#431fa7c79825934eefd62087d8e1faa6a9e376ad"
+  integrity sha512-KDeO94CbWI4pKsPnYpA1FPjo79EsY9I+M8ywoPBSf9XMXoe/0crjbUK7jcQEDHuc0ZMRIZsxH3TYLv4TUtHmAA==
+
+primeng@^17.0.0-beta.1:
+  version "17.0.0-beta.1"
+  resolved "http://cui.devel.kakao.com/primeng/-/primeng-17.0.0-beta.1.tgz#d69a48a58339ea95b261ccc1f84c6911d8fce787"
+  integrity sha512-vmSt8PFgnnwWBsH+p1+XLP9LwYnSOe6GDLn3hdGv6DsbA47MvixcqyQhdAMgdbAtncnpv39/cYRfwFS8zEofPg==
+  dependencies:
+    tslib "^2.3.0"
+
 proc-log@^3.0.0:
   version "3.0.0"
   resolved "http://cui.devel.kakao.com/proc-log/-/proc-log-3.0.0.tgz#fb05ef83ccd64fd7b20bbe9c8c1070fc08338dd8"
