@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Product } from '../app.value';
 import { Observable } from 'rxjs';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class ProductService {
   status: string[] = ['OUTOFSTOCK', 'INSTOCK', 'LOWSTOCK'];
   url = 'http://localhost:3000/data';
