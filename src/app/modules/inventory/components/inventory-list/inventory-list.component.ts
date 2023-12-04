@@ -16,10 +16,11 @@ export class InventoryListComponent implements OnInit {
 
   productDialog = false;
   products: Product[] = [];
-  product: Product = {};
+  product: Product = { name: '' };
   selectedProducts: Product[] = [];
   submitted = false;
-  statuses: any[] = [];
+  category1List: string[] = [];
+  location1List: string[] = [];
 
   constructor(
     private productService: ProductService,
@@ -32,15 +33,12 @@ export class InventoryListComponent implements OnInit {
       this.products = data;
     });
 
-    this.statuses = [
-      { label: 'INSTOCK', value: 'instock' },
-      { label: 'LOWSTOCK', value: 'lowstock' },
-      { label: 'OUTOFSTOCK', value: 'outofstock' },
-    ];
+    this.category1List = ['육아용품', '산모용품'];
+    this.location1List = ['거실', '부엌', '안방', '컴퓨터방'];
   }
 
   openNew() {
-    this.product = {};
+    this.product = { name: '' };
     this.submitted = false;
     this.productDialog = true;
   }
@@ -90,7 +88,7 @@ export class InventoryListComponent implements OnInit {
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         this.products = this.products.filter((val) => val.id !== product.id);
-        this.product = {};
+        this.product = { name: '' };
         this.messageService.add({
           severity: 'success',
           summary: 'Successful',
@@ -125,7 +123,6 @@ export class InventoryListComponent implements OnInit {
         this.productService.updateProduct(this.product.id, this.product);
       } else {
         this.product.id = this.createId();
-        this.product.image = 'product-placeholder.svg';
         this.products.push(this.product);
         this.messageService.add({
           severity: 'success',
@@ -138,7 +135,7 @@ export class InventoryListComponent implements OnInit {
 
       this.products = [...this.products];
       this.productDialog = false;
-      this.product = {};
+      this.product = { name: '' };
     }
   }
 
